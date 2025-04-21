@@ -1,0 +1,63 @@
+Informe Técnico
+Sistema de Gestión de Prioridades para Asistencia Médica Domiciliaria
+
+Introducción
+En muchos contextos del sector salud, la atención oportuna y priorizada de los pacientes es un factor crítico. Uno de estos escenarios corresponde al servicio de atención médica domiciliaria, donde no siempre el orden de llegada garantiza un tratamiento justo o eficiente. Este informe presenta el diseño e implementación de un sistema digital que permite gestionar una cola de prioridad para la atención médica, haciendo uso de estructuras de datos dinámicas, específicamente listas enlazadas, y principios de la programación orientada a objetos (POO) en el lenguaje de programación Python.
+Justificación
+El sistema responde a una problemática real en los servicios médicos: la necesidad de establecer un orden justo de atención, que tenga en cuenta no solo el momento de llegada del paciente, sino también la gravedad de su estado y factores adicionales como la edad. Por esta razón, se propone un modelo automatizado, adaptable y comprensible que contribuya a una mejor gestión operativa y médica en este tipo de servicios.
+Objetivo General
+Desarrollar un programa en Python que organice una cola de atención médica domiciliaria basada en un sistema de prioridades, utilizando listas enlazadas y programación orientada a objetos para gestionar de manera eficiente y automática la atención de pacientes.
+Requerimientos del Sistema
+Requerimientos funcionales
+1.	El sistema debe permitir registrar nuevos pacientes con los siguientes datos: nombre completo, edad, síntomas o motivo de consulta y nivel de gravedad (de 1 a 5).
+2.	La prioridad de atención debe estar determinada por la gravedad. En caso de igualdad en la gravedad, se dará preferencia en el siguiente orden:
+o	Niños menores de 12 años.
+o	Adultos mayores de 65 años.
+o	Resto de pacientes.
+3.	El sistema debe permitir:
+o	Ingresar pacientes.
+o	Atender (eliminar) al siguiente paciente con mayor prioridad.
+o	Visualizar el estado actual de la cola de pacientes.
+4.	El sistema debe mantener siempre la cola ordenada según los criterios establecidos.
+Requerimientos no funcionales
+1.	El código debe estar estructurado de forma modular, legible y documentada.
+2.	El sistema debe operar sin necesidad de conexión a internet ni dependencias externas.
+3.	La interacción será mediante consola, para garantizar su operatividad en entornos sin interfaz gráfica.
+Metodología
+Para el desarrollo del sistema se utilizaron los siguientes principios:
+•	Programación orientada a objetos: Se diseñaron clases específicas que encapsulan los datos y comportamientos asociados a los pacientes, los nodos y la lista enlazada.
+•	Listas enlazadas ordenadas: Se empleó una estructura de lista enlazada simple en la que cada inserción se realiza en la posición correcta según la prioridad calculada.
+•	Entrada y salida en consola: Para mantener el sistema accesible y portable, toda la interacción se realiza a través del terminal.
+Estructura del Sistema
+El sistema se compone de tres clases principales:
+Clase Paciente
+Encapsula los datos de un paciente: nombre, edad, síntomas y gravedad. Además, contiene un método que determina la prioridad basada en la gravedad y la edad. La prioridad se representa como una tupla (gravedad, prioridad_edad), donde:
+•	prioridad_edad vale 1 para niños menores de 12 años, 2 para adultos mayores de 65 años y 3 para el resto.
+Clase Nodo
+Representa cada elemento de la lista enlazada. Contiene un objeto Paciente y una referencia al siguiente nodo.
+Clase ListaEnlazada
+Contiene y gestiona los nodos. Permite insertar pacientes en la posición correspondiente según su prioridad, extraer el primer paciente (el de mayor prioridad) y mostrar todos los pacientes registrados en el orden de atención.
+Flujo del Menú
+El sistema se controla mediante un menú que ofrece cuatro opciones:
+1.	Ingresar paciente: Solicita los datos del paciente e inserta automáticamente en la posición adecuada.
+2.	Pasar siguiente paciente: Atiende y elimina al paciente con mayor prioridad.
+3.	Mostrar la cola: Muestra en orden todos los pacientes pendientes por atender.
+4.	Salir: Finaliza la ejecución del sistema.
+Ejemplo de Funcionamiento
+Si se ingresan los siguientes pacientes:
+•	Carlos Rojas, 35 años, gravedad 1.
+•	Marta López, 9 años, gravedad 2.
+•	Juan Pérez, 70 años, gravedad 2.
+El orden de atención será:
+1.	Carlos Rojas (mayor gravedad).
+2.	Marta López (gravedad 2, menor de 12).
+3.	Juan Pérez (gravedad 2, mayor de 65).
+Este orden es generado automáticamente por el sistema al momento de insertar los pacientes.
+Resultados y Evaluación
+El sistema se comporta correctamente ante diferentes escenarios, manteniendo siempre la integridad y el orden de la cola. Gracias al uso de listas enlazadas, la inserción de nuevos pacientes es dinámica y no requiere reordenamientos adicionales. La orientación a objetos permite un diseño limpio, escalable y fácil de mantener.
+Conclusiones
+El presente desarrollo permite automatizar una problemática común en el sector salud, mejorando la eficiencia operativa en servicios de atención domiciliaria. La implementación de listas enlazadas ordenadas y programación orientada a objetos demuestra ser una solución adecuada, escalable y comprensible. El sistema puede ser fácilmente adaptado a nuevas reglas de prioridad o ampliado con funcionalidades adicionales como almacenamiento persistente, historial de pacientes, o interfaz gráfica.
+Recomendaciones
+•	Para su uso en ambientes clínicos reales, se recomienda añadir mecanismos de respaldo de datos.
+•	Se sugiere evaluar su integración con bases de datos para almacenamiento histórico.
+•	En futuras versiones, puede desarrollarse una interfaz gráfica o web para mejorar la interacción con el usuario final.
